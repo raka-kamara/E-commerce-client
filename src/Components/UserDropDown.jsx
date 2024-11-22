@@ -1,27 +1,33 @@
 import { RxAvatar } from "react-icons/rx";
 import useAuth from "../hooks/useAuth";
 import { NavLink } from "react-router-dom";
+import useUserData from "../hooks/useUserData";
 
 const UserDropDown = () => {
-    const { user, Logout } = useAuth();
+  const { user, Logout } = useAuth();
+  const userData = useUserData();
 
-    const handleLogOut = () =>{
-        Logout();
-      }
-    
+  const handleLogOut = () => {
+    Logout();
+  };
+
   return (
-    <div>
+    <div className="">
+   
+
+
       <div className="dropdown dropdown-bottom dropdown-end">
-        <div tabIndex={0} role="button" className="m-1">
+        <div tabIndex={0} role="button" className="m-1 flex items-center">
           <div className="avatar">
             <div className=" ring-offset-base-100 w-10 rounded-full ring ">
               {user?.photoURL ? (
                 <img src={user.photoURL} alt="User Avatar" />
               ) : (
                 <RxAvatar className="w-full h-full" />
-              )}
+              )}         
             </div>
           </div>
+          <div className="badge">+{userData.wishlist.length}</div>
         </div>
         <ul
           tabIndex={0}

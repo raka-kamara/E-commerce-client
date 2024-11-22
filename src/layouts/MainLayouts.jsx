@@ -5,7 +5,7 @@ import Footer from "../Components/Shared/Footer"
 const MainLayouts = () => {
   return (
     <div className="mx-auto bg-base-100">
-        <div>
+        <div className="bg-base-100">
                 <Navbar/>
             </div>
             <div className="min-h-screen">
