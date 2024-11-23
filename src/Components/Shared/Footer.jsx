@@ -1,3 +1,4 @@
+import img from "../../../public/logo.png"
 
 const Footer = () => {
     return (
@@ -6,7 +7,7 @@ const Footer = () => {
         <aside>
          
           <p>
-          <a className="btn btn-ghost text-xl md:text-2xl font-bold"><img src="../../../public/logo.png" alt="" className="w-10 h-10"/> E-Mart</a>.
+          <a className="btn btn-ghost text-xl md:text-2xl font-bold"><img src={img} alt="" className="w-10 h-10"/> E-Mart</a>.
             <br />
             Providing reliable service since 2024
           </p>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import UserDropDown from "../UserDropDown";
 import useAuth from "../../hooks/useAuth";
+import img from "../../../public/logo.png"
 
 const Navbar = () => {
     const {user} = useAuth();
@@ -49,7 +50,7 @@ const Navbar = () => {
              
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl md:text-2xl font-bold"><img src="../../../public/logo.png" alt="" className="w-10 h-10"/> E-Mart</a>
+          <a className="btn btn-ghost text-xl md:text-2xl font-bold"><img src={img} alt="" className="w-10 h-10"/> E-Mart</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
