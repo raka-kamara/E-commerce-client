@@ -27,7 +27,7 @@ const AddProducts = () => {
     title, brand, price, ImgURL, stock, category, description, sellerEmail
   };
   const token = localStorage.getItem("access-token")
-  axios.post("http://localhost:4000/add-products", product, {
+  axios.post("https://gadget-shop-server-three.vercel.app/add-products", product, {
     headers:{
       Authorization: `Bearer ${token}`
     },

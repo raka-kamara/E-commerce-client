@@ -25,7 +25,7 @@ const Register = () => {
     const userData = { email, role, status, wishlist };
 
     CreateUser(data.email, data.password).then(() => {
-      axios.post("http://localhost:4000/users", userData).then((res) => {
+      axios.post("https://gadget-shop-server-three.vercel.app/users", userData).then((res) => {
         if(res.data.insertedId){
           Swal.fire({
             position: "center",

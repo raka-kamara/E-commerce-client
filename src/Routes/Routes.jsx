@@ -7,9 +7,15 @@ import DashboardLayout from "../layouts/DashBoardLayout";
 import Overview from "../Page/Dashboard/Overview";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
+import BuyerRoute from "./BuyerRoute";
 import MyProducts from "../Page/Dashboard/seller/MyProducts";
 import AddProducts from "../Page/Dashboard/seller/AddProducts";
 import Products from "../Page/Products";
+import MyWishList from "../Page/Dashboard/buyer/MyWishList";
+import About from "../Page/About";
+import ContactUs from "../Page/ContactUs";
+import ManageUsers from "../Page/Dashboard/admin/ManageUsers";
+import MyCart from "../Page/Dashboard/buyer/MyCart";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +25,14 @@ export const router = createBrowserRouter([
         {
           path:"/",
           element:<Home/>
+        },
+        {
+          path:"/about",
+          element:<About/>
+        },
+        {
+          path:"/contact-us",
+          element:<ContactUs/>
         },
         {
           path:"/products",
@@ -42,6 +56,15 @@ export const router = createBrowserRouter([
           path: "/dashboard/overview",
           element:<Overview/>,
         },
+        // buyer routes
+        {
+          path: "/dashboard/wishlist",
+          element:<BuyerRoute><MyWishList/></BuyerRoute>,
+        },
+        {
+          path: "/dashboard/cart",
+          element:<BuyerRoute><MyCart/></BuyerRoute>,
+        },
         // seller routes
         {
           path: "/dashboard/my-products",
@@ -51,6 +74,12 @@ export const router = createBrowserRouter([
           path: "/dashboard/add-products",
           element:<SellerRoute><AddProducts/></SellerRoute>,
         },
+        // admin
+        {
+          path: "/dashboard/manage-users",
+          element:<ManageUsers/>,
+        },
+
       ]
     }
   ]);

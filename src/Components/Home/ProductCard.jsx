@@ -2,23 +2,61 @@ import axios from "axios";
 import useUserData from "../../hooks/useUserData";
 import Swal from "sweetalert2";
 
-
 // eslint-disable-next-line react/prop-types
 const ProductCard = ({ product }) => {
   const userData = useUserData();
   const userEmail = userData.email;
-  console.log( userEmail)
+  console.log(userEmail);
 
-  const handleWishlist = async () => {
+  const handleCart = async () =>{
     try {
       const response = await axios.patch(
-        "http://localhost:4000/wishlist/add",
+        "https://gadget-shop-server-three.vercel.app/cart",
         {
           userEmail: userEmail,
           productId: product._id,
         }
       );
-  
+
+      if (response.data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product added to cart",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "info",
+          title: "Product is already in your cart",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
+      console.error("Error adding product to wishlist:", error);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to add product to wishlist",
+        text: error.response?.data?.message || "An unexpected error occurred.",
+        showConfirmButton: true,
+      });
+    }
+  }
+
+  const handleWishlist = async () => {
+    try {
+      const response = await axios.patch(
+        "https://gadget-shop-server-three.vercel.app/wishlist/add",
+        {
+          userEmail: userEmail,
+          productId: product._id,
+        }
+      );
+
       if (response.data.modifiedCount) {
         Swal.fire({
           position: "center",
@@ -47,7 +85,7 @@ const ProductCard = ({ product }) => {
       });
     }
   };
-  
+
   return (
     <div className="max-w-lg w-64 mx-auto border rounded-lg shadow-md overflow-hidden bg-white">
       <figure className="relative">
@@ -86,8 +124,24 @@ const ProductCard = ({ product }) => {
         <p className="text-sm text-gray-500 mt-2">
           Seller: {product.sellerEmail}
         </p>
-        <button className="btn w-full btn-sm" onClick={handleWishlist}>
-      Add to wishlist
+        <button
+          className={`btn w-full mt-1 btn-sm ${
+            userData.role !== "buyer" ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={handleWishlist}
+          disabled={userData.role !== "buyer"}
+        >
+          Add to wishlist
+        </button>
+
+        <button
+          className={`btn w-full my-4 btn-sm ${
+            userData.role !== "buyer" ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          onClick={handleCart}
+          disabled={userData.role !== "buyer"}
+        >
+          Add to Cart
         </button>
       </div>
     </div>

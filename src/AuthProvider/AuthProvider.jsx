@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        axios.post(`http://localhost:4000/authentication`, {
+        axios.post(`https://gadget-shop-server-three.vercel.app/authentication`, {
           email: currentUser.email,
         }).then((data)=>{
           if(data.data){

@@ -27,14 +27,14 @@ const UserDropDown = () => {
               )}         
             </div>
           </div>
-          <div className="badge">+{userData.wishlist.length}</div>
+          <div className="badge">+{userData?.wishlist?.length}</div>
         </div>
         <ul
           tabIndex={0}
           className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow flex gap-3"
         >
           <li>
-            <NavLink to="/dashboard">DashBoard</NavLink>
+            <NavLink to="/dashboard/overview">DashBoard</NavLink>
           </li>
           <li>
             <button

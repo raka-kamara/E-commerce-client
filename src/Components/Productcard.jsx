@@ -1,24 +1,21 @@
-
-const Productcard = () => {
+const ProductCard = ({ product }) => {
   return (
-    <div className="flex">
-      <div className="card glass w-96">
+    <div className="flex justify-center">
+      <div className="card glass w-96 h-96">
         <figure>
           <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="product image!"
+            src={product.ImgURL || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"} // Default image if none provided
+            alt={product.title}
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Life hack</h2>
-          <p>How to park your car at your garage?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Learn now!</button>
-          </div>
+          <h2 className="card-title">{product.title}</h2>
+          <p>{product.description}</p>
+         
         </div>
       </div>
     </div>
   );
 };
 
-export default Productcard;
+export default ProductCard;
